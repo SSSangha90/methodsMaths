@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace methodsArithmetic
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool mathProgram = true; // wrapped the switch case in a do while loop, to ensure the program repeats if the user inputs wrong input for sign.
+            do {
+                Console.WriteLine("Please enter a number: "); // these were initially declared, although popped in the do, whilst math program function true. 
+                double firstNum = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Please enter the sign you would like to use:  +, -, x, *, /");
+                string mathSign = Console.ReadLine();
+
+                Console.WriteLine("Please enter another number: ");
+                double secondNum = Convert.ToDouble(Console.ReadLine());
+ 
+                //switch now begins within the do while.
+                switch (mathSign)
+            {
+                case "x":
+                case "*":
+                    Console.WriteLine("The multiplication = " + multiplication(firstNum, secondNum));
+                     mathProgram = false;
+                    break;
+                case "+":
+                    Console.WriteLine("The addition = " + add(firstNum, secondNum));
+                        mathProgram = false;
+                        break;
+                case "-":
+                    Console.WriteLine("The subtraction = " + subtraction(firstNum, secondNum)); //calling the method set out below, can be set out before the main method, but now in between. 
+                        mathProgram = false;
+                        break;
+                case "/":
+                    Console.WriteLine("The division = " + division(firstNum, secondNum));
+                        mathProgram = false;
+                        break;
+                default:
+                    Console.WriteLine("Please enter a valid symbol"); // to re-start, nested this in a while do loop, e.g. if bool = false, begin loop again, see before the... end main. 
+                    break;
+                }
+                
+            } while (mathProgram);
+        }//end main
+
+        // method used within the switch case, initially done with the variables and operators, but now just included the methods set out below. 
+        static double add(double firstNum, double secondNum)
+        {
+            double total = firstNum + secondNum;
+            return total;
+        }
+
+        static double subtraction(double firstNum, double secondNum)
+        {
+            double total = firstNum - secondNum;
+            return total;
+        }
+
+        static double multiplication(double firstNum, double secondNum)
+        {
+            double total = firstNum * secondNum;
+            return total;
+        }
+
+        static double division(double firstNum, double secondNum)
+        {
+            double total = firstNum / secondNum;
+            return total;
+        }
+    }
+}
+// program complete after switch case, although applied sepearte methods to get the idea behind methods. 
